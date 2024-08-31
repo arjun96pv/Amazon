@@ -10,8 +10,7 @@ pipeline {
 stage('Build in Subfolders') {
             steps {
                 script {
-                    // Define an array of subfolders to navigate into
-                    def subfolders = ['Amazon', 'SKY', 'SpringCore', 'SpringDemo', 'SpringNew', 'test' ,'Test']
+                                       def subfolders = ['Amazon', 'SKY', 'SpringCore', 'SpringDemo', 'SpringNew', 'test' ,'Test']
                         }
                     }
                 }
