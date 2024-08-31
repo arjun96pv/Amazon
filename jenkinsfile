@@ -1,1 +1,45 @@
+pipeline {
+    agent any
+    stages {
 
+        stage('pull') {
+            steps {
+                git branch: 'main', url: 'https://github.com/PraveenKuber/Amazon-Jenkins.git'
+            }
+        }
+stage('Build in Subfolders') {
+            steps {
+                script {
+                    // Define an array of subfolders to navigate into
+                    def subfolders = ['Amazon', 'SKY', 'SpringCore', 'SpringDemo', 'SpringNew', 'test' ,'Test']
+                        }
+                    }
+                }
+        stage('compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+
+        stage('build') {
+            steps {
+                 sh 'mvn clean install'
+            }
+        }
+      
+    }
+
+  post{
+
+  success{
+     echo 'Build success'
+  }
+    
+  failure{
+       echo 'Failure in the build'
+   }
+
+  }
+
+
+}
