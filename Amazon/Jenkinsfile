@@ -1,1 +1,27 @@
-
+pipeline{
+    agent any
+    
+    stages{
+        stage('clone_amazon_project'){
+            steps{
+                git branch:'master' , url:'https://github.com/arjun96pv/Amazon.git'
+            }
+        }
+         stage('compile'){
+            steps{
+               sh 'mvn compile'
+            }
+        }
+        stage('test'){
+            steps{
+                sh 'mvn test'
+            }
+        }    
+         stage('build'){
+            steps{
+                sh 'mvn clean install'
+            }   
+        }
+    }
+        
+}
